@@ -1,0 +1,210 @@
+
+
+<header class="main-header navbar main-wrap">
+  <div class="col-search">
+    <form class="searchform">
+      <div class="input-group">
+        <input
+          list="search_terms"
+          type="text"
+          class="form-control"
+          placeholder="Search term"
+        />
+        <button class="btn btn-light bg" type="button">
+          <i class="material-icons md-search"></i>
+        </button>
+      </div>
+      <datalist id="search_terms">
+        <option value="Products"></option>
+        <option value="New orders"></option>
+        <option value="Apple iphone"></option>
+        <option value="Ahmed Hassan"></option>
+      </datalist>
+    </form>
+  </div>
+  <div class="col-nav mr-55">
+   
+    <ul class="nav">
+   
+      <li class="nav-item">
+        <a class="nav-link btn-icon darkmode" href="#">
+          <i class="material-icons md-nights_stay"></i>
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="#" class="requestfullscreen nav-link btn-icon"
+          ><i class="material-icons md-cast"></i
+        ></a>
+      </li> -->
+      
+      <li class="dropdown nav-item">
+        <a
+          class="dropdown-toggle"
+          data-bs-toggle="dropdown"
+          href="#"
+          id="dropdownLanguage"
+          aria-expanded="false"
+          ><i class="material-icons md-public"></i
+        ></a>
+        <div
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="dropdownLanguage"
+        >
+          <a class="dropdown-item text-brand" href="#"
+            ><img src="/imgs/theme/flag-us.png" alt="English" />English</a
+          >
+        </div>
+      </li>
+      <li class="dropdown nav-item">
+        <a
+          class="dropdown-toggle"
+          data-bs-toggle="dropdown"
+          href="#"
+          id="dropdownAccount"
+          aria-expanded="false"
+        >
+          <img
+            class="img-xs rounded-circle"
+            src="/imgs/people/avatar2.jpg"
+            alt="User"
+        /></a>
+        <div
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="dropdownAccount"
+        >
+          <a class="dropdown-item" href="#"
+            ><i class="material-icons md-perm_identity"></i>Edit Profile</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="material-icons md-settings"></i>Account Settings</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="material-icons md-account_balance_wallet"></i>Wallet</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="material-icons md-receipt"></i>Billing</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="material-icons md-help_outline"></i>Help center</a
+          >
+          
+      </li>
+    </ul>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle"  style="background-color:  #088178;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  
+        Super Admin
+        
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <% if (locals.admins) { %>
+       <a class="dropdown-item" href="/admin/adminLogout"> log out</a></li>
+        <%} else { %>
+      <li><a class="dropdown-item" href="/admin/adminLogin"> log in</a></li>
+      <% } %>
+ </ul>
+    </div>
+  </div>
+  
+</header>
+
+<aside class="navbar-aside" id="offcanvas_aside">
+  <div class="aside-top">
+    <a href="/" class="brand-wrap">
+      <!-- <img src="/imgs/theme/download.png" class="logo" alt="" /> -->
+    </a>
+    <div>
+      <button class="btn btn-icon btn-aside-minimize">
+        <i class="text-muted material-icons md-menu_open"></i>
+      </button>
+    </div>
+  </div>
+  <nav>
+    <ul class="menu-aside">
+      <li class="menu-item active">
+        <a class="" href="/admin/dashboard">
+          <i class="icon material-icons md-home"></i>
+          <span class="text" style="color: #000">Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="" href="/admin/products">
+          <i class="icon material-icons md-shopping_bag"></i>
+          <span class="text" style="color: #000">Products</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="" href="/admin/addCategory">
+          <i class="icon material-icons md-store"></i>
+          <span class="text" style="color: #000">Categories</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="" href="/admin/addSub">
+          <i class="icon material-icons md-store"></i>
+          <span class="text" style="color: #000">Sub Categories</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="" href="/orders">
+          <i class="icon material-icons md-shopping_cart"></i>
+          <span class="text" style="color: #000">Orders</span>
+        </a>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <a class="" href="/admin/addProduct">
+          <i class="icon material-icons md-add_box"></i>
+          <span class="text" style="color: #000">Add Product</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="" href="page-transactions-1.html">
+          <i class="icon material-icons md-monetization_on"></i>
+          <span class="text" style="color: #000">Transactions</span>
+        </a>
+      </li>
+      <!-- <li class="menu-item has-submenu">
+        <a class="" href="#">
+          <i class="icon material-icons md-person"></i>
+          <span class="text">Account</span>
+        </a>
+        <div class="submenu">
+          <a href="page-account-login.html">User login</a>
+          <a href="page-account-register.html">User registration</a>
+          <a href="page-error-404.html">Error 404</a>
+        </div>
+      </li> -->
+      <li class="menu-item">
+        <a class="" href="page-reviews.html">
+          <i class="icon material-icons md-comment"></i>
+          <span class="text" style="color: #000">Reviews</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="" href="/admin/users">
+          <i class="icon material-icons md-comment"></i>
+          <span class="text" style="color: #000">Users</span>
+        </a>
+      </li>
+      <!-- <li class="menu-item">
+        <a class="" href="page-brands.html">
+          <i class="icon material-icons md-stars"></i>
+          <span class="text">Brands</span>
+        </a>
+      </li> -->
+    </ul>
+    <hr />
+    <ul class="menu-aside">
+      <li class="menu-item has-submenu">
+        <a class="" href="/banners">
+          <i class="icon material-icons md-settings"></i>
+          <span class="text" style="color: #000">Banners</span>
+        </a>
+      </li>
+    </ul>
+    
+    <br />
+    <br />
+  </nav>
+</aside>

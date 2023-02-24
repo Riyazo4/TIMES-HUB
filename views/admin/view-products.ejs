@@ -1,0 +1,35 @@
+<section class="main-wrap mt-5 p-5">
+    <div class="container">
+      <a href="/admin/addProduct">
+      <button class="btn btn-primary mb-2">Add Products</button> 
+    </a>
+        <div class="row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Option</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% productData.forEach(function(productData,index){ %>
+                  <tr>
+                    <th scope="row"><%= index+1 %></th>
+                    <td><%= productData.ProductName %></td>
+                    <td><a href="/images/<%= productData.Image %>"><img src="/images/<%= productData.Image %>" style="width: 50px; height: 40px;" alt=""></a></td>
+                    <td><%= productData.Price %></td>
+                    <td><%= productData.Category %></td>
+                    <td><%= productData.Quantity %></td>
+                    <td><a href="/admin/getEditProduct/<%= productData._id %>" class="btn btn-success mr-1 btn-sm">Edit</a><a href="/admin/deleteProduct/<%= productData._id %>"class="btn btn-danger btn-sm mt-1" onclick="return confirm('Are you want to delete <%= productData.ProductName %>?')">Delete</a></td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>

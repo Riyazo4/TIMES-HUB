@@ -1,0 +1,91 @@
+node_modules
+
+
+  <% subTotal.forEach(function(subTotal){ %>
+                    <span class="font-lg fw-900 text-brand" id="subTotal">Rs <%=subTotal.subTotal%></span>
+                  <% }) %>
+
+
+
+
+
+
+
+
+
+           <table class="table shopping-summery text-center clean">
+            <thead>
+              <tr class="main-heading">
+                <th scope="col">No</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+
+            <% for(let i=0 ;i<cartItems.carted.length;i++) %>
+            <tbody>
+              <tr>
+                <td><%= index+1 %></td>
+                <td class="image product-thumbnail">
+                  <a href="/images/<%=carted[i].Image %>"
+                    ><img
+                      src="/images/<%= carted[i].Image %>"
+                      alt="#"
+                      style="height: 80px; width: 80px"
+                  /></a>
+                </td>
+                <td class="product-des product-name">
+                  <h5 class="product-name"><%= carted[i].ProductName %></h5>
+                  <p class="font-xs"><%= carted[i].Category %></p>
+                </td>
+                <td class="price" data-title="Price">
+                  <span>Rs <%= carted[i].Price %></span>
+                </td>
+
+                <td class="text-center" data-title="Stock">
+                  <button
+                    class="ml-5 btn btn-sm"
+                    style="width: 40px; height: 40px"
+                    onclick="changeQuantity('<%= cart._id %>','<%=cart.item %>','<%= user.id %>',-1)"
+                  >
+                    -
+                  </button>
+                  <span id="<%= cart.item %>" class="m-1"
+                    ><%= cart.quantity %></span
+                  >
+                  <button
+                    class="mr-5 btn btn-sm"
+                    style="width: 40px; height: 40px"
+                    onclick="changeQuantity('<%= cart._id %>','<%= cart.item %>','<%= user.id %>',1)"
+                  >
+                    +
+                  </button>
+                </td>
+                <td class="cart_total_amount">
+               
+                    <span class="font-lg fw-900 text-brand" id="subTotal">Rs <%=subTotal.subTotal%></span>
+                 
+                </td>
+
+                <td class="action" data-title="Remove">
+                  <button
+                    onclick="removeProduct('<%= cart.item %>','<%= user.id %>')"
+                    class="btn btn-danger"
+                  >
+                    Remove Item
+                  </button>
+                </td>
+              </tr>
+
+              <!-- <tr>
+                              <td colspan="6" class="text-end">
+                                <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+                              </td>
+                            </tr> -->
+            </tbody>
+            <% } %>
+          </table>

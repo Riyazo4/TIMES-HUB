@@ -1,0 +1,163 @@
+<header class="header-area header-style-3 header-height-2">
+  <div class="header-top header-top-ptb-1 d-none d-lg-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-3 col-lg-4">
+          <div class="header-info">
+            <ul>
+              <li>
+                <!-- <i class="fi-rs-smartphone"></i> -->
+                <!-- <a href="#">(+01) - 2345 - 6789</a> -->
+              </li>
+              <li>
+             
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-4">
+          <div class="text-center">
+            <div id="news-flash" class="d-inline-block">
+              <ul>
+                <li>
+                  Get Luxuries Watches up to 50% off
+                  <a href="shop-grid-right.html">View details</a>
+                </li>
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-4">
+          <div class="header-info header-info-right">
+            <ul>
+              <li>
+                <a class="language-dropdown-active" href="#">
+                  <i class="fi-rs-world"></i> English
+                  </a>
+              
+              </li>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"  style="background-color:  #088178;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <% if ( locals.user) { %>
+                    <%=user.userName %>
+                    <%} else { %>
+                    Account 
+                    <% } %>
+          
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <% if (locals.user) { %>
+                 <a class="dropdown-item text-dark" href="/Logout"> log out</a></li>
+                  <%} else { %>
+                <li><a class="dropdown-item text-dark" href="/login"> log in</a></li>
+                <% } %>
+           </ul>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="header-bottom header-bottom-bg-color sticky-bar">
+    <div class="container ">
+      <div class="header-wrap header-space-between position-relative main-nav">
+        <div class="logo logo-width-1 d-block d-lg-none">
+        
+        </div>
+        <div class="header-nav d-none d-lg-flex">
+          <div class="main-categori-wrap d-none d-lg-block">
+            <a class="categori-button-active" href="#">
+              <span class="fi-rs-apps"></span> Browse Categories
+            </a>
+            <div class="categori-dropdown-wrap categori-dropdown-active-large">
+              <ul>
+                <li class="has-children">
+                  <a href="shop-grid-right.html"
+                    ><i class="evara-font-dress"></i>Women's Watches</a
+                  >
+                  
+                </li>
+                <li class="has-children">
+                  <a href="shop-grid-right.html"
+                    ><i class="evara-font-tshirt"></i>Men's Watches</a
+                  >
+                 
+                </li>
+                <li class="has-children">
+                  <a href="shop-grid-right.html"
+                    ><i class="evara-font-tshirt"></i>Kid's Watches</a
+                  >
+                </li>
+                
+                  </ul>
+                </li>
+              </ul>
+              <div class="more_categories">Show more...</div>
+            </div>
+          </div>
+          <div
+            class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block"
+          >
+            <nav>
+              <ul>
+                <li>
+                  <!-- active aakanam -->
+                  <a class="" href="/">Home <i class=""></i></a>
+                </li>
+                <li>
+                  <a href="/shop">Shop <i class=""></i></a>
+                </li>
+                <li class="position-static">
+                  <a href="/cart">Cart</a>
+                </li>
+                <li>
+                  <a href="#">Orders <i class=""></i></a>
+                </li>
+
+                <li>
+                  <a href="">Contact</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- <div class="hotline d-none d-lg-block">
+          <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888</p>
+        </div> -->
+        <div class="header-action-right">
+          <div class="header-action-2">
+            <div class="header-action-icon-2">
+              <a href="#">
+                <img
+                  class="svgInject"
+                  alt="Evara"
+                  src="assets/imgs/theme/icons/icon-heart.svg"
+                />
+                <!-- <span class="pro-count blue"></span> -->
+              </a>
+            </div>
+            <div class="header-action-icon-2">
+              <a class="mini-cart-icon" href="/cart">
+                <img
+                  alt="Evara"
+                  src="assets/imgs/theme/icons/icon-cart.svg"
+                />
+                <% if(locals.user) { %>
+              
+                <span class="pro-count blue" id="cartCount"><%=locals.count %></span>
+            
+                <% } %>
+              </a>
+             
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</header>

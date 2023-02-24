@@ -1,0 +1,169 @@
+<section class="main-wrap">
+  <div class="container">
+    
+    <div class="row">
+      <% data.forEach(function(data){ %>
+      <div class="col-md-4 p-5">
+        <div class="card" style="width: 18rem;">
+          <a href="/fullImage/<%= data._id %>">
+           <img src="/images/<%= data.Image %>" class="card-img-top" style="height: 200px;" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><%= data.ProductName %></h5>
+            <p class="card-text"><%= data.Category %></p>
+            <p class="card-text">Rs <%= data.Price %></p>
+
+            <button onclick="addToCart('<%= data._id %>'); Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Item Added Successfully To Cart',
+              showConfirmButton: false,
+              timer: 2000
+            })"   class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+        
+
+  
+  <footer class="main">
+    <section class="newsletter p-30 text-white wow fadeIn animated">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-md-3 mb-lg-0">
+            
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <section class="section-padding footer-mid">
+      <div class="container pt-15 pb-20">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="widget-about font-md mb-md-5 mb-lg-0">
+              <div class="logo logo-width-1 wow fadeIn animated">
+                <a href="index.html"
+                  ><img src="assets/imgs/theme/009-03.jpg" alt="logo"
+                /></a>
+              </div>
+           
+              <div
+                class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0"
+              >
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <h5 class="widget-title wow fadeIn animated">About</h5>
+            <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Delivery Information</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Support Center</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <h5 class="widget-title wow fadeIn animated">My Account</h5>
+            <ul class="footer-list wow fadeIn animated">
+              <li><a href="#">Sign In</a></li>
+              <li><a href="#">View Cart</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Order</a></li>
+            </ul>
+          </div>
+          <!-- <div class="col-lg-4">
+            <h5 class="widget-title wow fadeIn animated">Install App</h5>
+            <div class="row">
+              <div class="col-md-8 col-lg-12">
+                <p class="wow fadeIn animated">From App Store or Google Play</p>
+                <div class="download-app wow fadeIn animated">
+                  <a href="#" class="hover-up mb-sm-4 mb-lg-0"
+                    ><img
+                      class="active"
+                      src="assets/imgs/theme/app-store.jpg"
+                      alt=""
+                  /></a>
+                  <a href="#" class="hover-up"
+                    ><img src="assets/imgs/theme/google-play.jpg" alt=""
+                  /></a>
+                </div>
+              </div> -->
+              <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                <p class="mb-20 wow fadeIn animated">
+                  Secured Payment Gateways
+                </p>
+                <img
+                  class="wow fadeIn animated"
+                  src="assets/imgs/theme/payment-method.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+  </footer>
+  <!-- Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="text-center">
+          <h5 class="mb-5">TIMES HUB</h5>
+          <div class="loader">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function addToCart(proId){
+    $.ajax({
+      url:'/addToCart/'+proId,
+      method:'get',
+       success:(response)=>{
+    
+        if(response.status){
+          
+          // console.log('set');
+          let count = $('#cartCount').html()
+          count = parseInt(count)+1
+          $('#cartCount').html(count)
+        }
+       }
+    })
+  }
+
+</script>
+

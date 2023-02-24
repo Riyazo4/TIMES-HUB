@@ -1,0 +1,221 @@
+<section class="main-wrap">
+  <div class="container">
+    <div class="row m-5">
+      <div class="col-12">
+        <div class="table-responsive">
+         
+          <table class="table shopping-summery text-center clean">
+            <thead>
+              <tr class="main-heading">
+                <th scope="col">No</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <!-- <th scope="col">Subtotal</th> -->
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+
+            <% cartItems.forEach(function(cart,index){ %>
+            <tbody>
+              <tr>
+                <td><%= index+1 %></td>
+                <td class="image product-thumbnail">
+                  <a href="/images/<%= cart.carted.Image %>"
+                    ><img
+                      src="/images/<%=cart.carted.Image %>"
+                      alt="#"
+                      style="height: 80px; width: 80px"
+                  /></a>
+                </td>
+                <td class="product-des product-name">
+                  <h5 class="product-name"><%= cart.carted.ProductName %></h5>
+                  <p class="font-xs"><%= cart.carted.Category %></p>
+                </td>
+                <td class="price" data-title="Price">
+                  <span>Rs <%=cart.carted.Price %></span>
+                </td>
+
+                <td class="text-center" data-title="Stock">
+                  <button
+                    class="ml-5 btn btn-sm"
+                    style="width: 40px; height: 40px"
+                    onclick="changeQuantity('<%= cart._id %>','<%=cart.item %>','<%= user.id %>',-1)"
+                  >
+                    -
+                  </button>
+                  <span id="<%= cart.item %>" class="m-1"
+                    ><%= cart.quantity %></span
+                  >
+                  <button
+                    class="mr-5 btn btn-sm"
+                    style="width: 40px; height: 40px"
+                    onclick="changeQuantity('<%= cart._id %>','<%= cart.item %>','<%= user.id %>',1)"
+                  >
+                    +
+                  </button>
+                </td>
+               
+
+                <td class="action" data-title="Remove">
+                  <button
+                    onclick="removeProduct('<%= cart.item %>','<%= user.id %>')"
+                    class="btn btn-danger"
+                  >
+                    Remove Item
+                  </button>
+                </td>
+              </tr>
+
+              <!-- <tr>
+                              <td colspan="6" class="text-end">
+                                <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+                              </td>
+                            </tr> -->
+            </tbody>
+            <% }) %>
+          </table>
+        </div>
+        <div class="cartItems-actions">
+         
+        <div class="divider center_icon mt-50 mb-50">
+          <i class="fi-rs-fingerprint"></i>
+        </div>
+         <div class="row mb-50">
+          <div class="col-lg-6 col-md-12">
+
+            <div class="mb-30 mt-50">
+              <div class="heading_s1 mb-3">
+                <h4>Apply Coupon</h4>
+              </div>
+              <div class="total-amount">
+                <div class="left">
+                  <div class="coupon">
+                    <form action="/cartItems" target="_blank">
+                      <div class="form-row row justify-content-center">
+                        <div class="form-group col-lg-6">
+                          <input
+                            class="font-medium"
+                            name="Coupon"
+                            placeholder="Enter Your Coupon"
+                          />
+                        </div>
+                       
+                        <div class="form-group col-lg-6">
+                          <button class="btn btn-sm">
+                            <i class="fi-rs-label mr-10"></i>Apply
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 mx-auto mr-5f">
+            <div class="border p-md-4 p-30 border-radius cartItems-totals">
+              <div class="heading_s1 mb-3">
+                <h4>Total Price</h4>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <!-- <td class="cartItems_total_label">cartItems Subtotal</td> -->
+                      <!-- <td class="cartItems_total_amount">
+                        <span id="subtotal" class="font-lg fw-900 text-brand"
+                          >total</span
+                        > -->
+                      </td>
+                    </tr>
+                    <!-- <tr>
+                      <td class="cartItems_total_label">Shipping</td>
+                      <td class="cartItems_total_amount">
+                        <i class="ti-gift mr-5"></i> Free Shipping
+                      </td>
+                    </tr> -->
+                    <tr>
+                      <!-- <td class="cartItems_total_label">Total</td> -->
+                      <td class="cartItems_total_amount">
+                        <strong
+                          >Rs:<span id="total" class="font-xl fw-900 text-brand">
+                            <%=total%></span
+                          ></strong
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="/placeOrder" class="btn">
+                <i class="fi-rs-box-alt mr-10"></i>Place Order</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function changeQuantity(cartId, proId, userId, count) {
+    console.log("cartId" + cartId);
+    console.log("proId" + proId);
+    console.log("count" + count);
+    console.log("userId" + userId);
+
+    let Quantity = parseInt(document.getElementById(proId).innerHTML);
+    
+    count = parseInt(count);
+    console.log("ttttttttttttttttttttt");
+    $.ajax({
+      url: "/changeQuantity",
+      data: {
+        cart: cartId,
+        product: proId,
+        count: count,
+        user: userId,
+        Quantity: Quantity,
+      },
+      method: "put",
+      success: (response) => {
+        // alert(response);
+        if(response.removeProduct){
+          alert("Removed Product From Cart")
+          location.reload()
+        }else{
+          let cardQuantity = Quantity+count;
+          console.log("cardQuantity"+cardQuantity);
+          document.getElementById(proId).innerHTML=cardQuantity
+          
+          document.getElementById('total').innerHTML=response.total
+          // location.reload()
+          // document.getElementById("subTotal").innerHTML=response.subTotal
+
+        }
+      },
+    });
+  }
+
+  function removeProduct(proId, userId) {
+    // console.log("rjfkj"+proId,userId);
+    $.ajax({
+      url: "/removeItem",
+      data: {
+        product: proId,
+        user: userId,
+      },
+      method: "delete",
+      success: (response) => {
+        if (response.removeProduct) {
+          alert("Product Remove From Cart")
+          location.reload()
+          console.log("Sucess");
+        }
+      },
+    });
+  }
+</script>

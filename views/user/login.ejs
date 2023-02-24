@@ -1,0 +1,226 @@
+<section>
+  <div class="page-header breadcrumb-wrap">
+    <div class="container">
+      <!-- <div class="breadcrumb">
+        <!-- <a href="/" rel="nofollow">Home</a>
+        <span></span> Pages <span></span>  -->
+      <!-- </div> --> 
+    
+    </div>
+  </div>
+  <main class="main">
+    <section class="p-auto my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 m-auto">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-6">
+                <div
+                  class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5"
+                >
+                  <div class="padding_eight_all bg-white">
+                    <div class="heading_s1">
+                      <h3 class="mb-30 text-center">Login</h3>
+                    </div>
+                 <% if (locals.block) { %>
+                  <p class="text-center" style="color: red;">You're blocked by Admin</p>
+                  <% } %>
+                  <%if(locals.logged==false){%>
+                    <p style="color: red;" class="message text-center">Incorrect Username or Password</p>
+                    <%}%>
+                    <form action="/login" method="post">
+                      <div class="form-group">
+                        <input
+                          type=""
+                          required=""
+                          name="email"
+                          placeholder="Your Email/Mobile Number"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          required=""
+                          type="password"addCategory
+                          name="password"
+                          placeholder="Password"
+                        />
+                      </div>
+                      <div class="login_footer form-group">
+                        <div class="chek-form">
+                          <div class="custome-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              name="checkbox"
+                              id="exampleCheckbox1"
+                              value=""
+                            />
+                            <!-- <label
+                              class="form-check-label"
+                              for="exampleCheckbox1"
+                              ><span>Remember me</span></label
+                            > -->
+                          </div>
+                        </div>
+                        <!-- <a class="text-muted" href="#">Forgot password?</a> -->
+                      </div>
+                      <div class="form-group">
+
+                        <button
+                          type="submit"
+                          class="btn btn-fill-out btn-block hover-up"
+                          name="login"
+                          style="width: 100%"
+                        >
+                          Log in
+                        </button>
+                      </div>
+                      <div>
+                        <p class="mb-3 text-center text-success">OR</p>
+                      </div>
+                    </form>
+                      <div class="form-group">
+                        <a href="/getOtp">
+                        <button
+                          type="submit"
+                          class="btn btn-fill-out btn-block hover-up"
+                        
+                          style="width: 100%"
+                        >
+                          Request OTP
+                        </button>
+                      </a>
+                      </div>
+                      <div>
+                        <a class="ms-5" href="/signup"
+                          >New ? Create An Account</a
+                        >
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- <footer class="main">
+    <section class="section-padding footer-mid">
+      <div class="container pt-15 pb-20">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="widget-about font-md mb-md-5 mb-lg-0">
+              <!-- <div class="logo logo-width-1 wow fadeIn animated">
+                <a href="index.html"
+                  ><img src="assets/imgs/theme/logo.svg" alt="logo"
+                /></a>
+              </div> -->
+              <!-- <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">
+                Contact
+              </h5>
+              <p class="wow fadeIn animated">
+                <strong>Address: </strong>562 Wellington Road, Street 32, San
+                Francisco
+              </p>
+              <p class="wow fadeIn animated">
+                <strong>Phone: </strong>+01 2222 365 /(+91) 01 2345 6789
+              </p>
+              <p class="wow fadeIn animated">
+                <strong>Hours: </strong>10:00 - 18:00, Mon - Sat
+              </p>
+              <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">
+                Follow Us
+              </h5>
+              <div
+                class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0"
+              >
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""
+                /></a>
+                <a href="#"
+                  ><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <h5 class="widget-title wow fadeIn animated">About</h5>
+            <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Delivery Information</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Support Center</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <h5 class="widget-title wow fadeIn animated">My Account</h5>
+            <ul class="footer-list wow fadeIn animated">
+              <li><a href="#">Sign In</a></li>
+              <li><a href="#">View Cart</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Order</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="widget-title wow fadeIn animated">Install App</h5>
+            <div class="row">
+              <div class="col-md-8 col-lg-12">
+                <p class="wow fadeIn animated">From App Store or Google Play</p>
+                <div class="download-app wow fadeIn animated">
+                  <a href="#" class="hover-up mb-sm-4 mb-lg-0"
+                    ><img
+                      class="active"
+                      src="assets/imgs/theme/app-store.jpg"
+                      alt=""
+                  /></a>
+                  <a href="#" class="hover-up"
+                    ><img src="assets/imgs/theme/google-play.jpg" alt=""
+                  /></a>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                <p class="mb-20 wow fadeIn animated">
+                  Secured Payment Gateways
+                </p>
+                <img
+                  class="wow fadeIn animated"
+                  src="assets/imgs/theme/payment-method.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </footer> -->
+  <!-- Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="text-center">
+          <h5 class="mb-5">Now Loading</h5>
+          <div class="loader">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
